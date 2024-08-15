@@ -1,0 +1,111 @@
+USE [BrunoTeste]
+GO
+
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[Contato](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[IdPessoa] [int] NOT NULL,
+	[Nome] [varchar](50) NULL,
+	[Tipo] [varchar](8) NULL,
+	[Contato] [varchar](50) NULL,
+ CONSTRAINT [PK_Contato] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+ALTER TABLE [dbo].[Contato]  WITH CHECK ADD  CONSTRAINT [FK_Contato_Pessoa] FOREIGN KEY([IdPessoa])
+REFERENCES [dbo].[Pessoa] ([Id])
+GO
+
+ALTER TABLE [dbo].[Contato] CHECK CONSTRAINT [FK_Contato_Pessoa]
+GO
+
+
+USE [BrunoTeste]
+GO
+
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[Endereco](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[IdPessoa] [int] NOT NULL,
+	[Cep] [varchar](8) NULL,
+	[Estado] [varchar](2) NULL,
+	[Cidade] [varchar](50) NULL,
+	[Logradouro] [varchar](100) NULL,
+	[Numero] [int] NULL,
+	[Complemento] [varchar](50) NULL,
+ CONSTRAINT [PK_Endereco] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+ALTER TABLE [dbo].[Endereco]  WITH CHECK ADD  CONSTRAINT [FK_Endereco_Pessoa] FOREIGN KEY([IdPessoa])
+REFERENCES [dbo].[Pessoa] ([Id])
+GO
+
+ALTER TABLE [dbo].[Endereco] CHECK CONSTRAINT [FK_Endereco_Pessoa]
+GO
+
+
+USE [BrunoTeste]
+GO
+
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[Pessoa](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[Nome] [varchar](50) NULL,
+	[Sobrenome] [varchar](50) NULL,
+	[DataNascimento] [date] NULL,
+	[Email] [varchar](50) NULL,
+	[Cpf] [varchar](11) NULL,
+	[Rg] [varchar](9) NULL,
+ CONSTRAINT [PK_Pessoa] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+
+USE [BrunoTeste]
+GO
+
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[Usuario](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[Username] [varchar](20) NULL,
+	[Senha] [varchar](20) NULL,
+	[Email] [varchar](50) NULL,
+	[Telefone] [varchar](50) NULL,
+ CONSTRAINT [PK_Usuario] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+
