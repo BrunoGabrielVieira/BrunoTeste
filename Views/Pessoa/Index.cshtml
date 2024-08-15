@@ -2,7 +2,7 @@
 @{
     ViewData["Title"] = "Pessoa";
 }
-@using (Html.BeginForm("UsuarioSubmit", "Usuario", FormMethod.Post))
+@using (Html.BeginForm("Cadastrar", "Pessoa", FormMethod.Post))
 {
     <div class="pessoa box">
         <div class="titulo">Cadastrar Pessoa Física</div>
@@ -40,113 +40,79 @@
         <div class="separador"></div>
         <div class="divisao">
             <div class="header">Enderecos</div>
-            <div class="row">
-                <div class="field">
-                    <label for="logradouro">Logradouro</label>
-                    <input id="logradouro" type="text" maxlength="50" name="Enderecos[0][Logradouro]">
-                </div>
-                <div class="field">
-                    <label for="numero">Numero</label>
-                    <input id="numero" type="number" maxlength="10" name="Enderecos[0][Numero]">
-                </div>
-                <div class="field">
-                    <label for="cep">CEP</label>
-                    <input id="cep" type="number" maxlength="8" name="Enderecos[0][Cep]">
-                </div>
+            <div>
+                <template id="endereco_template">
+                    <div class="endereco">
+                        <div class="row">
+                            <div class="field">
+                                <label>Logradouro</label>
+                                <input class="item logradouro" type="text" maxlength="50" name="Enderecos[0][Logradouro]">
+                            </div>
+                            <div class="field">
+                                <label>Numero</label>
+                                <input class="item numero" type="number" maxlength="10" name="Enderecos[0][Numero]">
+                            </div>
+                            <div class="field">
+                                <label>CEP</label>
+                                <input class="item cep" type="number" maxlength="8" name="Enderecos[0][Cep]">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="field">
+                                <label>Complemento</label>
+                                <input class="item complemento" type="text" maxlength="50" name="Enderecos[0][Complemento]">
+                            </div>
+                            <div class="field">
+                                <label>Cidade</label>
+                                <input class="item cidade" type="text" maxlength="50" name="Enderecos[0][Cidade]">
+                            </div>
+                            <div class="field">
+                                <label>Estado</label>
+                                <input class="item estado" type="text" maxlength="2" name="Enderecos[0][Estado]">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <button class="remover" onclick="removerEndereco(this)">Remover</button>
+                        </div>
+                    </div>
+                </template>
             </div>
             <div class="row">
-                <div class="field">
-                    <label for="complemento">Complemento</label>
-                    <input id="complemento" type="text" maxlength="50" name="Enderecos[0][Complemento]">
-                </div>
-                <div class="field">
-                    <label for="cidade">Cidade</label>
-                    <input id="cidade" type="text" maxlength="50" name="Enderecos[0][Cidade]">
-                </div>
-                <div class="field">
-                    <label for="estado">Estado</label>
-                    <input id="estado" type="text" maxlength="2" name="Enderecos[0][Estado]">
-                </div>
-            </div>
-            <div class="row">
-                <button disabled class="remover">Remover</button>
-            </div>
-            <div class="row">
-                <div class="field">
-                    <label for="logradouro">Logradouro</label>
-                    <input id="logradouro" type="text" maxlength="50" name="Enderecos[1][Logradouro]">
-                </div>
-                <div class="field">
-                    <label for="numero">Numero</label>
-                    <input id="numero" type="number" maxlength="10" name="Enderecos[1][Numero]">
-                </div>
-                <div class="field">
-                    <label for="cep">CEP</label>
-                    <input id="cep" type="text" maxlength="8" name="Enderecos[1][Cep]">
-                </div>
-            </div>
-            <div class="row">
-                <div class="field">
-                    <label for="complemento">Complemento</label>
-                    <input id="complemento" type="text" maxlength="50" name="Enderecos[1][Complemento]">
-                </div>
-                <div class="field">
-                    <label for="cidade">Cidade</label>
-                    <input id="cidade" type="text" maxlength="50" name="Enderecos[1][Cidade]">
-                </div>
-                <div class="field">
-                    <label for="estado">Estado</label>
-                    <input id="estado" type="text" maxlength="2" name="Enderecos[1][Estado]">
-                </div>
-            </div>
-            <div class="row">
-                <button disabled class="remover">Remover</button>
+                <button type="button" class="adicionar" onclick="adicionarEndereco()">Adicionar Endereço</button>
             </div>
         </div>
         <div class="separador"></div>
         <div class="divisao">
             <div class="header">Contatos</div>
-            <div class="row">
-                <div class="field">
-                    <label for="nome">Nome</label>
-                    <input id="nome" type="text" maxlength="50" name="Contatos[0][Nome]">
-                </div>
-                <div class="field">
-                    <label for="nontato">Contato</label>
-                    <input id="nontato" type="text" maxlength="50" name="Contatos[0][Contato]">
-                </div>
-                <div class="field">
-                    <label for="Tipo">Tipo contato</label>
-                    <input id="Tipo" list="tipos_contato" name="Contatos[0][Tipo]">
-                    <datalist id="tipos_contato">
-                        <option value="Telefone"></option>
-                        <option value="EMail"></option>
-                    </datalist>
-                </div>
+            <div>
+                <template id="contato_template">
+                    <div class="contato">
+                        <div class="row">
+                            <div class="field">
+                                <label>Nome</label>
+                                <input class="item nome" type="text" maxlength="50" name="Contatos[0][Nome]">
+                            </div>
+                            <div class="field">
+                                <label>Contato</label>
+                                <input class="item nontato" type="text" maxlength="50" name="Contatos[0][Contato]">
+                            </div>
+                            <div class="field">
+                                <label>Tipo contato</label>
+                                <input class="item tipo" list="tipos_contato" name="Contatos[0][Tipo]">
+                                <datalist id="tipos_contato">
+                                    <option value="Telefone"></option>
+                                    <option value="EMail"></option>
+                                </datalist>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <button type="button" class="remover" onclick="removerContato(this)">Remover</button>
+                        </div>
+                    </div>
+                </template>
             </div>
             <div class="row">
-                <button disabled class="remover">Remover</button>
-            </div>
-            <div class="row">
-                <div class="field">
-                    <label for="nome">Nome</label>
-                    <input id="nome" type="text" maxlength="50" name="Contatos[1][Nome]">
-                </div>
-                <div class="field">
-                    <label for="nontato">Contato</label>
-                    <input id="nontato" type="text" maxlength="50" name="Contatos[1][Contato]">
-                </div>
-                <div class="field">
-                    <label for="Tipo">Tipo contato</label>
-                    <input id="Tipo" list="tipos_contato" name="Contatos[1][Tipo]">
-                    <datalist id="tipos_contato">
-                        <option value="Telefone"></option>
-                        <option value="EMail"></option>
-                    </datalist>
-                </div>
-            </div>
-            <div class="row">
-                <button disabled class="remover">Remover</button>
+                <button type="button" class="adicionar" onclick="adicionarContato()">Adicionar Contato</button>
             </div>
         </div>
         <div class="separador"></div>
@@ -154,4 +120,79 @@
             <button type="submit">Salvar</button>
         </div>
     </div>
+}
+@section Scripts {
+    <script>
+        var enderecoCount = 0,
+            contatoCount = 0;
+
+        function adicionarEndereco() {
+            const template = document.getElementById('endereco_template');
+            const instance = template.content.cloneNode(true);
+            const item = instance.querySelectorAll('.item');
+            const i = enderecoCount;
+            item[0].name = 'Enderecos[' + i + '][Logradouro]';
+            item[1].name = 'Enderecos[' + i + '][Numero]';
+            item[2].name = 'Enderecos[' + i + '][Cep]';
+            item[3].name = 'Enderecos[' + i + '][Complemento]';
+            item[4].name = 'Enderecos[' + i + '][Cidade]';
+            item[5].name = 'Enderecos[' + i + '][Estado]';
+            enderecoCount++;
+            template.parentElement.appendChild(instance);
+        }
+
+        function adicionarContato() {
+            const template = document.getElementById('contato_template');
+            const instance = template.content.cloneNode(true);
+            const item = instance.querySelectorAll('.item');
+            const i = contatoCount;
+            item[0].name = 'Contatos[' + i + '][Nome]';
+            item[1].name = 'Contatos[' + i + '][Contato]';
+            item[2].name = 'Contatos[' + i + '][Tipo]';
+            contatoCount++;
+            template.parentElement.appendChild(instance);
+        }
+
+        function removerEndereco(e)
+        {
+            const enderecos = document.getElementsByClassName('endereco');
+            const endereco = e.parentElement.parentElement;
+            const div = endereco.parentElement;
+            div.removeChild(endereco);
+
+            enderecoCount = enderecos.length;
+
+            for (let i = 0; i < enderecoCount; i++)
+            {
+                let item = enderecos[i].querySelectorAll('.item');
+                item[0].name = 'Enderecos[' + i + '][Logradouro]';
+                item[1].name = 'Enderecos[' + i + '][Numero]';
+                item[2].name = 'Enderecos[' + i + '][Cep]';
+                item[3].name = 'Enderecos[' + i + '][Complemento]';
+                item[4].name = 'Enderecos[' + i + '][Cidade]';
+                item[5].name = 'Enderecos[' + i + '][Estado]';
+            }
+        }
+
+        function removerContato(e)
+        {
+            const contatos = document.getElementsByClassName('contato');
+            const contato = e.parentElement.parentElement;
+            const div = contato.parentElement;
+            div.removeChild(contato);
+
+            contatoCount = contatos.length;
+
+            for (let i = 0; i < contatoCount; i++)
+            {
+                let item = contatos[i].querySelectorAll('.item');
+                item[0].name = 'Contatos[' + i + '][Nome]';
+                item[1].name = 'Contatos[' + i + '][Contato]';
+                item[2].name = 'Contatos[' + i + '][Tipo]';
+            }
+        }
+
+        adicionarEndereco();
+        adicionarContato();
+    </script>
 }
