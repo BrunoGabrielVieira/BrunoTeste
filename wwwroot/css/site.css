@@ -1,0 +1,61 @@
+html,
+body {
+  position: relative;
+  margin: 0;
+  padding: 32px;
+  width: 100%;
+  height: 100%;
+  font-size: 14px;
+}
+
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+
+.box {
+  box-sizing: border-box;
+  border: 1px solid #000000;
+  margin: 0;
+  padding: 16px;
+}
+
+.box .titulo {
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.box .divisao {
+  margin: 16px;
+}
+
+.box .divisao .header {
+    font-size: 18px;
+    font-weight: bold;
+    margin: 8px 0;
+}
+
+.box .divisao .row {
+  margin: 8px;
+}
+
+.box .divisao .row .field {
+  
+  display: inline-block;
+  width: 30%;
+  margin: 8px;
+  padding: 0;
+}
+
+.box .divisao .row .field label {
+  width: 100%;
+}
+
+.box .divisao .row .field input {
+  width: 100%;
+}
+
+.box .divisao .row button.remover {
+  width: auto;
+  margin-left: 1%;
+}

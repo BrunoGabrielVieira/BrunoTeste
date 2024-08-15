@@ -1,0 +1,29 @@
+﻿@model LoginViewModel
+@{
+    ViewData["Title"] = "Login";
+}
+
+@using (Html.BeginForm("LoginSubmit", "Login", FormMethod.Post))
+{
+    <div class="box">
+        <div class="divisao">
+            <div class="header">Login de Usuário</div>
+            <div class="row">
+                <div class="field">
+                    <label for="username">Username</label>
+                    <input type="text" id="username" name="Username"> 
+                </div>
+            </div>
+            <div class="row">
+                <div class="field">
+                    <label for="senha">Senha</label>
+                    <input type="password" id="senha" name="Senha">
+                </div>
+            </div>
+            <div class="row">
+                <button type="submit">Login</button>
+            </div>
+        </div>
+    </div>
+}
+<a href="@Url.Action("Index", "Usuario")">Cadastrar</button>

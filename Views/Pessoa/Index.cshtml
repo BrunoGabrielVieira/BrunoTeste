@@ -1,0 +1,157 @@
+﻿@model PessoaViewModel
+@{
+    ViewData["Title"] = "Pessoa";
+}
+@using (Html.BeginForm("UsuarioSubmit", "Usuario", FormMethod.Post))
+{
+    <div class="pessoa box">
+        <div class="titulo">Cadastrar Pessoa Física</div>
+        <div class="divisao">
+            <div class="header">Dados Pessoais</div>
+            <div class="row">
+                <div class="field">
+                    <label for="nome">Nome</label>
+                    <input id="nome" type="text" maxlength="50" name="Nome">
+                </div>
+                <div class="field">
+                    <label for="sobrenome">Sobrenome</label>
+                    <input id="sobrenome" type="text" maxlength="50" name="Sobrenome">
+                </div>
+                <div class="field">
+                    <label for="datanascimento">Data de nascimento</label>
+                    <input id="datanascimento" type="date" name="DataNascimento">
+                </div>
+            </div>
+            <div class="row">
+                <div class="field">
+                    <label for="email">Email</label>
+                    <input id="email" type="text" maxlength="50" name="Email">
+                </div>
+                <div class="field">
+                    <label for="cpf">CPF</label>
+                    <input id="cpf" type="text" maxlength="11" name="Cpf">
+                </div>
+                <div class="field">
+                    <label for="rg">Rg</label>
+                    <input id="rg" type="text" maxlength="9" name="Rg">
+                </div>
+            </div>
+        </div>
+        <div class="separador"></div>
+        <div class="divisao">
+            <div class="header">Enderecos</div>
+            <div class="row">
+                <div class="field">
+                    <label for="logradouro">Logradouro</label>
+                    <input id="logradouro" type="text" maxlength="50" name="Enderecos[0][Logradouro]">
+                </div>
+                <div class="field">
+                    <label for="numero">Numero</label>
+                    <input id="numero" type="number" maxlength="10" name="Enderecos[0][Numero]">
+                </div>
+                <div class="field">
+                    <label for="cep">CEP</label>
+                    <input id="cep" type="number" maxlength="8" name="Enderecos[0][Cep]">
+                </div>
+            </div>
+            <div class="row">
+                <div class="field">
+                    <label for="complemento">Complemento</label>
+                    <input id="complemento" type="text" maxlength="50" name="Enderecos[0][Complemento]">
+                </div>
+                <div class="field">
+                    <label for="cidade">Cidade</label>
+                    <input id="cidade" type="text" maxlength="50" name="Enderecos[0][Cidade]">
+                </div>
+                <div class="field">
+                    <label for="estado">Estado</label>
+                    <input id="estado" type="text" maxlength="2" name="Enderecos[0][Estado]">
+                </div>
+            </div>
+            <div class="row">
+                <button disabled class="remover">Remover</button>
+            </div>
+            <div class="row">
+                <div class="field">
+                    <label for="logradouro">Logradouro</label>
+                    <input id="logradouro" type="text" maxlength="50" name="Enderecos[1][Logradouro]">
+                </div>
+                <div class="field">
+                    <label for="numero">Numero</label>
+                    <input id="numero" type="number" maxlength="10" name="Enderecos[1][Numero]">
+                </div>
+                <div class="field">
+                    <label for="cep">CEP</label>
+                    <input id="cep" type="text" maxlength="8" name="Enderecos[1][Cep]">
+                </div>
+            </div>
+            <div class="row">
+                <div class="field">
+                    <label for="complemento">Complemento</label>
+                    <input id="complemento" type="text" maxlength="50" name="Enderecos[1][Complemento]">
+                </div>
+                <div class="field">
+                    <label for="cidade">Cidade</label>
+                    <input id="cidade" type="text" maxlength="50" name="Enderecos[1][Cidade]">
+                </div>
+                <div class="field">
+                    <label for="estado">Estado</label>
+                    <input id="estado" type="text" maxlength="2" name="Enderecos[1][Estado]">
+                </div>
+            </div>
+            <div class="row">
+                <button disabled class="remover">Remover</button>
+            </div>
+        </div>
+        <div class="separador"></div>
+        <div class="divisao">
+            <div class="header">Contatos</div>
+            <div class="row">
+                <div class="field">
+                    <label for="nome">Nome</label>
+                    <input id="nome" type="text" maxlength="50" name="Contatos[0][Nome]">
+                </div>
+                <div class="field">
+                    <label for="nontato">Contato</label>
+                    <input id="nontato" type="text" maxlength="50" name="Contatos[0][Contato]">
+                </div>
+                <div class="field">
+                    <label for="Tipo">Tipo contato</label>
+                    <input id="Tipo" list="tipos_contato" name="Contatos[0][Tipo]">
+                    <datalist id="tipos_contato">
+                        <option value="Telefone"></option>
+                        <option value="EMail"></option>
+                    </datalist>
+                </div>
+            </div>
+            <div class="row">
+                <button disabled class="remover">Remover</button>
+            </div>
+            <div class="row">
+                <div class="field">
+                    <label for="nome">Nome</label>
+                    <input id="nome" type="text" maxlength="50" name="Contatos[1][Nome]">
+                </div>
+                <div class="field">
+                    <label for="nontato">Contato</label>
+                    <input id="nontato" type="text" maxlength="50" name="Contatos[1][Contato]">
+                </div>
+                <div class="field">
+                    <label for="Tipo">Tipo contato</label>
+                    <input id="Tipo" list="tipos_contato" name="Contatos[1][Tipo]">
+                    <datalist id="tipos_contato">
+                        <option value="Telefone"></option>
+                        <option value="EMail"></option>
+                    </datalist>
+                </div>
+            </div>
+            <div class="row">
+                <button disabled class="remover">Remover</button>
+            </div>
+        </div>
+        <div class="separador"></div>
+        <div class="divisao">
+            <button type="submit">Salvar</button>
+        </div>
+    </div>
+}

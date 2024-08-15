@@ -1,0 +1,36 @@
+﻿@model UsuarioViewModel
+@{
+    ViewData["Title"] = "Cadastro";
+}
+
+@using (Html.BeginForm("UsuarioSubmit", "Usuario", FormMethod.Post))
+{
+    <div class="box">
+        <div class="divisao">
+            <div class="header">Cadastro de Usuário</div>
+            <div class="row">
+                <div class="field">
+                    <label for="Username">Username</label>
+                    <input id="Username" type="text" maxlength="50" name="Username">
+                </div>
+                <div class="field">
+                    <label for="Email">Email</label>
+                    <input id="Email" type="text" maxlength="50" name="Email">
+                </div>
+            </div>
+            <div class="row">
+                <div class="field">
+                    <label for="Telefone">Telefone</label>
+                    <input id="Telefone" type="text" maxlength="50" name="Telefone">
+                </div>
+                <div class="field">
+                    <label for="Senha">Senha</label>
+                    <input id="Senha" type="password" maxlength="50" name="Senha">
+                </div>
+            </div>
+            <div class="row">
+                <button type="submit">Cadastrar Usuário</button>
+            </div>
+        </div>
+    </div>
+}
